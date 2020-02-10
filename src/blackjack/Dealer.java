@@ -59,7 +59,21 @@ public class Dealer {
     }
     
     public void declareWinners(){
-        
+        for(Player currPlayer : myPlayers){
+            if(currPlayer.getMyHand().getScore() > 21){
+                System.out.println(currPlayer + " loses");
+            }else if(currPlayer.getMyHand().getNumOfCards() == 5 && 
+                    (dealerHand.getScore() < 21 || 
+                    dealerHand.getNumOfCards() < 5)){
+                System.out.println(currPlayer + " wins");
+            }else if(dealerHand.getScore() >= 
+                    currPlayer.getMyHand().getScore()){
+                System.out.println(currPlayer + " loses");
+            }else if(currPlayer.getMyHand().getScore() > dealerHand.getScore()){
+                System.out.println(currPlayer + " wins");
+            }
+        }
+                
     }
 
     private void initMyPlayers(int num) {
